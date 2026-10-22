@@ -29,7 +29,7 @@ h2.sec{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.5px}
 /* NAV */
 .nav{position:sticky;top:0;z-index:50;background:rgba(11,27,51,.92);backdrop-filter:blur(10px);color:#fff}
 .nav-in{max-width:1080px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.nav img,.nav video{height:42px;border-radius:10px}
+.nav img{height:42px;border-radius:10px}
 .nav-links{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto;align-items:center}
 .nav-links a{color:#C9D6EE;font-weight:600;font-size:13.5px;padding:8px 12px;border-radius:10px}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
@@ -1084,7 +1084,7 @@ window.closeQR=()=>$('#qr-modal').classList.add('hidden');
 })();
 </script>
 <script>
-document.querySelectorAll('.nav img, .hero .logo-big, .auth-card img, .panel-top img').forEach(logo=>{
+document.querySelectorAll('.hero .logo-big, .auth-card img, .panel-top img').forEach(logo=>{
   const video=document.createElement('video');
   Array.from(logo.attributes).forEach(attribute=>{
     if(attribute.name!=='src'&&attribute.name!=='alt') video.setAttribute(attribute.name,attribute.value);
@@ -1094,6 +1094,7 @@ document.querySelectorAll('.nav img, .hero .logo-big, .auth-card img, .panel-top
   video.muted=true;
   video.loop=true;
   video.playsInline=true;
+  if(logo.matches('.hero .logo-big')) video.controls=true;
   video.setAttribute('aria-label','Vídeo institucional Marujos do Asfalto');
   logo.replaceWith(video);
 });
